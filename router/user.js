@@ -9,5 +9,8 @@ router
   .post('/create', async (ctx, next) => {
     ctx.body = await userModule.add(ctx.request.body)
   })
+  .post('/auth', async (ctx, next) => {
+    ctx.body = await userModule.auth(ctx.request.body)
+  })
 
 module.exports = router
