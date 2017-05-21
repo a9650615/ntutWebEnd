@@ -1,6 +1,6 @@
 const db = require('./db')
 const config = require('../config')
-const jwt = require('jwt-simple');
+const jwt = require('jwt-simple')
 
 let User = db.register({
   name: {type: String, default: '', required: true},
@@ -22,8 +22,8 @@ class UserModule {
   async add(data) {
     let msg = []
     try{
-      await User(data).save()
-      return {status: true, token: jwt.encode({account: data.account, password: data.password}, config.secret)}
+      let[err, ret] = await new User(data).save()
+      return {status: true, token: jwt.encode({account: ret.account, password: ret.password, _id: ret._id}, config.secret)}
     } catch(e) {
       for(let i in e.errors) {
         msg.push(e.errors[i].message)
@@ -36,10 +36,14 @@ class UserModule {
     return User.find()
   }
 
+  get() {
+    return User;
+  }
+
   async auth(data) {
     let user = await User.findOne(data)
     if (user) {
-      return {status: true, token: jwt.encode({account: user.account, password: user.password}, config.secret)}
+      return {status: true, token: jwt.encode({account: user.account, password: user.password, _id: user._id}, config.secret)}
     } else {
       return {status: false, msg: ['登入失敗']}
     }

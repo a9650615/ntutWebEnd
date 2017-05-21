@@ -13,13 +13,18 @@ class db {
     return StaticDb
   }
 
-  static register(classData = null, moduleName) {
-    if(classData) {
-      let schema = new Schema(classData)
+  static register(classData, option = null, moduleName = null) {
+    if (option && typeof(option) === 'object') {
+      let schema = new Schema(classData, option)
       return mongoose.model(moduleName, schema)
-    } else {
-      return mongoose.model(moduleName)
     }
+    else
+      if(classData) {
+        let schema = new Schema(classData)
+        return mongoose.model(option, schema)
+      } else {
+        return mongoose.model(option)
+      }
   }
 }
 

@@ -6,6 +6,7 @@ router
     ctx.body = 'index'
   })
   .use('/user', require('./router/user').routes())
+  .use('/post', require('./router/post').routes())
   .get('/test', async (ctx, next) => {
     // const test = new TestModule({
     //   id: 0,
