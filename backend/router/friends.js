@@ -2,9 +2,9 @@ const router = require('koa-router')()
 const FriendsModule = require('../models/FriendsModules.js')
 
 router
-  .get('/list/:page', async ctx => {
+  .get('/list', async ctx => {
     let page = ctx.request.body.page
-    console.log(ctx.request.header.auth)
+    ctx.body = await FriendsModule.list(ctx.request.header.auth)
   })
   .post('/req/:id', async ctx => {
     let data = ctx.request.body

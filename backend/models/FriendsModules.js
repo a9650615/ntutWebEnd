@@ -5,18 +5,32 @@ const jwt = require('jwt-simple')
 const config = require('../config')
 
 const FriendsDb = db.register({
-  request: {type: Schema.Types.ObjectId, require: true},
-  to: {type: Schema.Types.ObjectId, require: true},
+  request: {type: Schema.Types.ObjectId, require: true, ref: 'users'},
+  to: {type: Schema.Types.ObjectId, require: true, ref: 'users'},
   status: {type: Number, default: 0}
 },
 { timestamps: {} },
 'friends')
 
 class FriendsModule {
-  list(token, page = 0) {
-    let user = jwt.decode(fromToken, config.secret)
-    FriendsDb.find({$or: [{request: user._id}, {to: user._id}]})
+  async list(token) {
+    let userList = []
+    let user = jwt.decode(token, config.secret)
+    let data = await FriendsDb.find({
+      $or: [
+        {$and: [{request: user._id}, {status: 1}]},
+        {$and: [{to: user._id}, {status: 1}]}
+      ]}).populate('request').populate('to')
 
+    data.forEach(val => {
+      if (val.request._id !== user._id) {
+        userList.push(val.request)
+      } else {
+        userList.push(val.to)
+      }
+    })
+
+    return {status: true, userList}
   }
 
   async request(fromToken = '', to) {
