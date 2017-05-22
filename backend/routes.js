@@ -7,6 +7,7 @@ router
   })
   .use('/user', require('./router/user').routes())
   .use('/post', require('./router/post').routes())
+  .use('/friends', require('./router/friends').routes())
   .get('/test', async (ctx, next) => {
     // const test = new TestModule({
     //   id: 0,
