@@ -1,5 +1,5 @@
 const router = require('koa-router')()
-const FriendsModule = require('../models/FriendsModules.js')
+const FriendsModule = require('../models/FriendsModule')
 
 router
   .get('/list', async ctx => {

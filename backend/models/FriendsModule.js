@@ -13,6 +13,9 @@ const FriendsDb = db.register({
 'friends')
 
 class FriendsModule {
+  get() {
+    return FriendsDb
+  }
   async list(token) {
     let userList = []
     let user = jwt.decode(token, config.secret)

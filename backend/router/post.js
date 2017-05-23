@@ -2,8 +2,9 @@ const router = require('koa-router')()
 const PostModule = require('../models/PostModule')
 
 router
-  .get('/:page', async (ctx) => {
-
+  .get('/', async (ctx) => {
+    // ctx.params.page
+    ctx.body = await PostModule.listPosts(ctx.request.header.auth, 0)
   })
   .post('/push', async (ctx) => {
     ctx.body = await PostModule.pushPost(ctx.request.body)
