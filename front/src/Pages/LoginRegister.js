@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-flexbox-grid'
+import { Row, Col } from 'react-flexbox-grid'
 import Paper from 'material-ui/Paper'
 import TextInput from '../Components/TextInput'
 import FlatButton from 'material-ui/FlatButton'
