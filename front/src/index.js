@@ -5,15 +5,25 @@ import {
 } from 'react-router-dom'
 import Routers from './Routers'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import registerServiceWorker from './registerServiceWorker'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import './index.css'
 
 injectTapEventPlugin()
 
+const style = {
+  IconMenu: {
+    iconStyle: {
+      color: 'white'
+    }
+  }
+}
+
 ReactDOM.render(
   <Router>
-    <MuiThemeProvider>
+    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       <Routers />
     </MuiThemeProvider>
   </Router>, 

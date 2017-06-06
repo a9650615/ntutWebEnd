@@ -1,13 +1,33 @@
 import React, { Component } from 'react'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import Login from './Login'
+
+const Logged = (props) => (
+  <IconMenu
+    iconButtonElement={
+      <IconButton><MoreVertIcon /></IconButton>
+    }
+    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+    >
+    <MenuItem primaryText="個人資料" />
+    <MenuItem primaryText="登出" />
+  </IconMenu>
+)
+
+Logged.muiName = 'IconMenu'
 
 export default class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      drawerOpen: false
+      drawerOpen: false,
+      login: localStorage.getItem('token')!==''
     }
   }
 
@@ -17,23 +37,17 @@ export default class Header extends Component {
     })
   }
 
-  rightButtons() {
-    return (
-      <div>
-        <IconButton iconClassName="material-icons">face</IconButton>
-        <IconButton iconClassName="material-icons">&#xE8AF;</IconButton>
-        <IconButton iconClassName="material-icons">&#xE5C5;</IconButton>
-      </div>
-    )
+  loginUpdate() {
+    this.setState({login: true})
   }
 
   render() {
     return (
       <div>
         <AppBar
-          title="Fakebook"
+          title="集資網站"
           onLeftIconButtonTouchTap={this.drawerSw.bind(this)}
-          iconElementRight={this.rightButtons()}
+          iconElementRight={this.state.login? <Logged /> : <Login loginEvent={this.loginUpdate.bind(this)} />}
           />
         <Drawer 
           open={this.state.drawerOpen} 
