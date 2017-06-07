@@ -7,27 +7,34 @@ import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import Login from './Login'
 
-const Logged = (props) => (
-  <IconMenu
-    iconButtonElement={
-      <IconButton><MoreVertIcon /></IconButton>
-    }
-    targetOrigin={{horizontal: 'right', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-    >
-    <MenuItem primaryText="個人資料" />
-    <MenuItem primaryText="登出" />
-  </IconMenu>
-)
+class Logged extends Component {
+  logout() {
+    localStorage.setItem('token', '')
+    this.props.loginEvent()
+  }
 
-Logged.muiName = 'IconMenu'
+  render() {
+    return (
+      <IconMenu
+        iconButtonElement={
+          <IconButton><MoreVertIcon color='white' /></IconButton>
+        }
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+        >
+        <MenuItem primaryText="個人資料" />
+        <MenuItem onTouchTap={this.logout.bind(this)} primaryText="登出" />
+      </IconMenu>
+    )
+  }
+}
 
 export default class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
       drawerOpen: false,
-      login: localStorage.getItem('token')!==''
+      login: localStorage.getItem('token') !== null && localStorage.getItem('token') !== ''
     }
   }
 
@@ -38,7 +45,8 @@ export default class Header extends Component {
   }
 
   loginUpdate() {
-    this.setState({login: true})
+    let state = localStorage.getItem('token') !== null && localStorage.getItem('token') !== ''
+    this.setState({login: state})
   }
 
   render() {
@@ -47,7 +55,7 @@ export default class Header extends Component {
         <AppBar
           title="集資網站"
           onLeftIconButtonTouchTap={this.drawerSw.bind(this)}
-          iconElementRight={this.state.login? <Logged /> : <Login loginEvent={this.loginUpdate.bind(this)} />}
+          iconElementRight={this.state.login? <Logged loginEvent={this.loginUpdate.bind(this)} /> : <Login loginEvent={this.loginUpdate.bind(this)} />}
           />
         <Drawer 
           open={this.state.drawerOpen} 
