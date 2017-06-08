@@ -11,6 +11,7 @@
 
 .MainContent .titleBlock h1 {
     font-size: 3rem;
+    text-shadow: 0px 1px 10px #333;
 }
 
 .MainContent .background {

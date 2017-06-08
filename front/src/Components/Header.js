@@ -54,6 +54,7 @@ export default class Header extends Component {
       <div>
         <AppBar
           title="集資網站"
+          style={{position: 'fixed'}}
           onLeftIconButtonTouchTap={this.drawerSw.bind(this)}
           iconElementRight={this.state.login? <Logged loginEvent={this.loginUpdate.bind(this)} /> : <Login loginEvent={this.loginUpdate.bind(this)} />}
           />
