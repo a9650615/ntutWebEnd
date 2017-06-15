@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import {withRouter} from "react-router-dom";
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
+import {ListItem} from 'material-ui/List'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
@@ -29,7 +31,7 @@ class Logged extends Component {
   }
 }
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -63,9 +65,11 @@ export default class Header extends Component {
           docked={false}
           width={300}
           onRequestChange={(data) => this.setState({drawerOpen: data})}>
-
+            <ListItem primaryText="首頁" onTouchTap={() => this.props.history.push('/')} />
         </Drawer>
       </div>
     );
   }
 }
+
+export default withRouter(Header)
