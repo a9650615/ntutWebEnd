@@ -12,7 +12,7 @@ export default class Routers extends Component{
         <Header />
         <div style={{paddingTop: 64}}>
           <Route exact path="/" component={App}/>
-          <Route path="/project" component={Project}/>
+          <Route path="/project/*" component={Project}/>
           {/*<Route path="/login" component={LoginRegister} />*/}
         </div>
       </div>

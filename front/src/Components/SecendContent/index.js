@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
@@ -6,6 +7,10 @@ import Paper from 'material-ui/Paper'
 import './SecendContent.css'
 
 class SecendContent extends Component {
+  go(path) {
+    this.props.history.push(path)
+  }
+
 	render () {
 		return (
 			<Grid fluid>
@@ -18,7 +23,10 @@ class SecendContent extends Component {
                 <h1 className="mainTitle">弱勢族群</h1>
                 <p>#地位低 #無權 #無勢</p>
                 <RaisedButton label="贊助" secondary />
-                <FlatButton label="查看詳細" />
+                <FlatButton 
+                  label="查看詳細" 
+                  onTouchTap={this.go.bind(this, '/project/2')}
+                  />
               </div>
 						</Paper>
 					</Col>
@@ -30,7 +38,10 @@ class SecendContent extends Component {
                 <h1 className="mainTitle">海洋廢棄物</h1>
                 <p>#沙灘破壞</p>
                 <RaisedButton label="贊助" secondary />
-                <FlatButton label="查看詳細" />
+                <FlatButton 
+                  label="查看詳細" 
+                  onTouchTap={this.go.bind(this, '/project/3')}
+                  />
               </div>
 						</Paper>
           </Col>
@@ -40,4 +51,4 @@ class SecendContent extends Component {
 	}
 }
 
-export default SecendContent
+export default withRouter(SecendContent)
