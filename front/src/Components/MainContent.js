@@ -8,7 +8,7 @@ class MainContent extends Component {
 	render () {
 		return (
 			<div className="MainContent">
-				<Grid>
+				<Grid fluid>
 					<div className="titleBlock">
 						<h1 className="mainTitle">為這個美好世界獻上肥皂</h1>
 						<p>#水 #肥皂 #阿克亞</p>
