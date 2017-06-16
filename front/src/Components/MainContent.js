@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import { Grid } from 'react-flexbox-grid'
 import RaisedButton from 'material-ui/RaisedButton'
-import FlatButton from 'material-ui/FlatButton'
 import './MainContent.css'
 
 class MainContent extends Component {
@@ -17,10 +16,11 @@ class MainContent extends Component {
 					<div className="titleBlock">
 						<h1 className="mainTitle">為這個美好世界獻上肥皂</h1>
 						<p>#水 #肥皂 #阿克亞</p>
-						<RaisedButton label="贊助" secondary />
-						<FlatButton label="查看詳細" 
+						<RaisedButton 
+							label="查看詳細" 
 							style={{color: '#fff'}} 
 							onTouchTap={this.go.bind(this, '/project/1')} 
+							secondary
 							/>
 					</div>
 				</Grid>
