@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import RaisedButton from 'material-ui/RaisedButton'
-import FlatButton from 'material-ui/FlatButton'
 import './ActionSolgan.css'
 
 class ActionSolgan extends Component {
@@ -21,14 +20,18 @@ class ActionSolgan extends Component {
 							<Col sm={3} className="actionButtonBlock">
 								<RaisedButton 
 									label="Join Us"
-									onTouchTap={() => this.props.history.push('/intruction')} 
+									onTouchTap={() => this.props.history.push('/intruction')}
 									className="joinButton" secondary />
 							</Col>
 						</Row>
 					</Grid>
 					<div className="background"></div>
 				</div>
-				<RaisedButton label="Join Us" className="joinButton-sm" fullWidth secondary />
+				<RaisedButton label="Join Us" 
+					className="joinButton-sm" 
+					onTouchTap={() => this.props.history.push('/intruction')}
+					fullWidth 
+					secondary />
 			</div>
 		)
 	}
