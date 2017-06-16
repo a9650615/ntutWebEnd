@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom'
 import Header from './Components/Header'
 import App from './App'
 import Project from './Pages/Project'
+import Intruction from './Pages/Intruction'
+import Creator from './Pages/Creator'
 // import LoginRegister from './Pages/LoginRegister'
 
 export default class Routers extends Component{
@@ -13,6 +15,8 @@ export default class Routers extends Component{
         <div style={{paddingTop: 64}}>
           <Route exact path="/" component={App}/>
           <Route path="/project/*" component={Project}/>
+          <Route path="/intruction" component={Intruction} />
+          <Route path="/creator" component={Creator} />
           {/*<Route path="/login" component={LoginRegister} />*/}
         </div>
       </div>

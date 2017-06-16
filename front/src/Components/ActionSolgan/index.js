@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import {withRouter} from 'react-router-dom'
 import { Grid, Row, Col } from 'react-flexbox-grid'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import './ActionSolgan.css'
 
-class ActionSolgann extends Component {
+class ActionSolgan extends Component {
 	state = {  
 		
 	}
@@ -18,7 +19,10 @@ class ActionSolgann extends Component {
 								<h1 className="mainTitle">愛心不會被冷漠無視</h1>
 							</Col>
 							<Col sm={3} className="actionButtonBlock">
-								<RaisedButton label="Join Us" className="joinButton" secondary />
+								<RaisedButton 
+									label="Join Us"
+									onTouchTap={() => this.props.history.push('/intruction')} 
+									className="joinButton" secondary />
 							</Col>
 						</Row>
 					</Grid>
@@ -30,4 +34,4 @@ class ActionSolgann extends Component {
 	}
 }
 
-export default ActionSolgann
+export default withRouter(ActionSolgan)
