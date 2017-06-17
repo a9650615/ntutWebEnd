@@ -66,6 +66,8 @@ class Header extends Component {
           width={300}
           onRequestChange={(data) => this.setState({drawerOpen: data})}>
             <ListItem primaryText="首頁" onTouchTap={() => this.props.history.push('/')} />
+            <ListItem primaryText="關於本站" onTouchTap={() => this.props.history.push('/intruction')} />
+            <ListItem primaryText="創造者" onTouchTap={() => this.props.history.push('/creator')} />
         </Drawer>
       </div>
     );

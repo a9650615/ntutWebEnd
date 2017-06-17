@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Grid } from 'react-flexbox-grid'
-import MainContent from '../Components/MainContent'
+import FundProject from '../Components/FundProject/'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <MainContent />
+        <FundProject />
         <Grid fluid>
           這裡是詳細頁面
         </Grid>
