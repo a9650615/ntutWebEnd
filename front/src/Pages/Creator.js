@@ -20,7 +20,7 @@ class Creator extends Component {
         創造者頁面
         <ReactMarkdown source={this.state.textData} />
       </Grid>
-    );
+    )
   }
 }
 
