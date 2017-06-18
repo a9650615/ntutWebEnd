@@ -30,7 +30,7 @@ class ListElement extends Component {
         zDepth={this.state.zDepth}
         onMouseOver={this.onMouseOver.bind(this)}
         onMouseOut={this.onMouseOut.bind(this)}
-        onTouchTap={this.go.bind(this, `${this.props.match.params.projectId}/fund/1`)}>
+        onTouchTap={this.go.bind(this, `${this.props.match.params.projectId}/fund/${this.props.data.ID}`)}>
         <div className="avatar">
           <Avatar 
             src="https://lh6.googleusercontent.com/-byV2gLoJ0rk/AAAAAAAAAAI/AAAAAAAAAAA/AAyYBF7Jt2kovwja6Ys3VOwpP-nsqT_xWg/s96-c/photo.jpg"

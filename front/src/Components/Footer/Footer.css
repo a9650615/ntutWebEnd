@@ -16,6 +16,10 @@
   border-top: 1px solid #c3c3c3;
 }
 
+.footer .logo {
+  text-align: center;
+}
+
 @media only screen and (max-width: 48em) {
   .footer {
     position: relative;
@@ -24,5 +28,9 @@
 
   .mainContent {
     padding-bottom: 20px;
+  }
+
+  .textRight {
+    text-align: left;
   }
 }

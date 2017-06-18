@@ -6,6 +6,8 @@ import { Row , Col } from 'react-flexbox-grid'
 import Snackbar from 'material-ui/Snackbar'
 import Dialog from 'material-ui/Dialog'
 import Slider from 'material-ui/Slider'
+import axios from 'axios'
+import jwtDecode from 'jwt-decode'
 import './FundDetail.css'
 
 class FundDetail extends Component {
@@ -51,12 +53,22 @@ class FundDetail extends Component {
     })
   }
 
+  submit() {
+    axios.post(`${process.env['REACT_APP_API_URL']}founders/`, {
+      name: jwtDecode(localStorage.getItem('token')).name,
+      money: this.state.fundPrice,
+      spronsorID: this.props.id,
+      token: jwtDecode(localStorage.getItem('token')).sub
+    })
+    this.handleClose()
+  }
+
   render() {
     return (
       <div className="fundDetail">
         <Dialog
           title="選擇贊助額度"
-          actions={<FlatButton primary label="贊助"/>}
+          actions={<FlatButton primary label="贊助" onTouchTap={this.submit.bind(this)} />}
           modal={false}
           open={this.state.openFundSelect}
           onRequestClose={this.handleClose.bind(this)}

@@ -9,10 +9,10 @@ class Footer extends Component {
       <div className="footer">
         <Grid fluid>
           <Row>
-            <Col sm={3}>
+            <Col xs={12} sm={3} className="logo">
               <img src="/img/logo.png" alt="" style={{width: '100%', maxWidth: 163, minWidth: 'auto'}}/>
             </Col>
-            <Col smOffset={6} sm={3}>
+            <Col xs={12} xsOffset={0} smOffset={6} sm={3}>
               <p><Link to="/intruction">美好世界</Link></p>
               <p><Link to="/creator">創世神</Link></p>
             </Col>

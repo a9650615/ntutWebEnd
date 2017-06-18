@@ -9,7 +9,7 @@ class Funding extends Component {
       <Grid fluid>
         <Row style={{padding: '30px 0'}}>
           <Col xs={12} sm={8}>
-            <FundDetail />
+            <FundDetail id={this.props.match.params.fundId} />
           </Col>
           <Col xs={12} sm={4}>
             <Publish />
