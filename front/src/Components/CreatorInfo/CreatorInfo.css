@@ -1,0 +1,9 @@
+.creatorInfo {
+  margin: 30px 0;
+  padding: 0 30px;
+  cursor: pointer;
+}
+
+.creatorInfo .avatarInfo {
+  text-align: center;
+}

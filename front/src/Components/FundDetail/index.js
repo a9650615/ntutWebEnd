@@ -92,8 +92,8 @@ class FundDetail extends Component {
           Bababababababa
         </div>
         <Snackbar
-          open={this.state.message||false}
-          message={this.state.message}
+          open={this.state.message?true:false}
+          message={this.state.message||''}
           autoHideDuration={4000}
           onRequestClose={this.handleRequestClose.bind(this)}
           />
