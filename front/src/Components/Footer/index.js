@@ -10,7 +10,7 @@ class Footer extends Component {
         <Grid fluid>
           <Row>
             <Col sm={3}>
-              <img src="/img/logo.png" alt="" style={{width: '100%'}}/>
+              <img src="/img/logo.png" alt="" style={{width: '100%', maxWidth: 163, minWidth: 'auto'}}/>
             </Col>
             <Col smOffset={6} sm={3}>
               <p><Link to="/intruction">美好世界</Link></p>
