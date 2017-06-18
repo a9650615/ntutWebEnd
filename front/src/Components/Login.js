@@ -7,7 +7,7 @@ export default class LoginRegister extends Component {
   responseGoogle(response) {
     // console.log(response.getBasicProfile())
     // console.log(response.getAuthResponse().id_token)
-    // console.log(response.getBasicProfile())
+    console.log(response.getBasicProfile())
     localStorage.setItem('token', response.getAuthResponse().id_token)
     if (this.props.loginEvent)
       this.props.loginEvent()

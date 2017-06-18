@@ -1,7 +1,28 @@
 .listElement {
   padding: 10px 20px;
+  vertical-align: middle;
+  position: relative;
 }
 
 .listElement p {
   margin: 0.5rem;
+}
+
+.listElement .avatar {
+  width: 64px;
+  text-align: center;
+  min-height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.listElement .content {
+  width: calc(100% - 64px);
+  display: inline-block;
+  vertical-align: top;
+}
+
+.listElement .content .goal {
+  font-size: 1rem;
+  text-align: right;
 }
