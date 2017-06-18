@@ -7,7 +7,22 @@
   width: 100%;
 }
 
+.mainContent {
+  padding-bottom: 300px;
+}
+
 .footer hr {
   border: 0;
   border-top: 1px solid #c3c3c3;
+}
+
+@media only screen and (max-width: 48em) {
+  .footer {
+    position: relative;
+    bottom: auto;
+  }
+
+  .mainContent {
+    padding-bottom: 20px;
+  }
 }

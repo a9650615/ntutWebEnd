@@ -3,15 +3,28 @@ import axios from 'axios'
 import ListElement from './ListElement'
 
 export default class FundList extends Component {
-  state = {}
+  state = {
+    data: []
+  }
   componentWillMount() {
-    // axios.get(`${process.env['REACT_APP_API_URL']}`)
+    axios.get(`${process.env['REACT_APP_API_URL']}fundings/category/${this.props.category}`).then((data) => {
+      this.setState({
+        data: data.data.data
+      })
+      console.log(data.data.data)
+    })
   }
 
   render() {
     return (
       <div style={{minHeight: '40vh'}}>
-        <ListElement />
+        {
+          this.state.data.map((data) => {
+            return (
+            <ListElement key={data.ID} data={data}/>
+            )
+          })
+        }
       </div>
     )
   }

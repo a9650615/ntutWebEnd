@@ -15,7 +15,7 @@ export default class Routers extends Component{
     return (
       <div style={{position: 'relative'}}>
         <Header />
-        <div style={{paddingTop: 64, paddingBottom: 270, minHeight: 'calc(100vh - 334px)'}}>
+        <div className="mainContent" style={{paddingTop: 64, minHeight: 'calc(100vh - 334px)'}}>
           <Route exact path="/" component={App}/>
           <Switch>
             <Route path="/project/:projectId/fund/:fundId" component={Funding} />

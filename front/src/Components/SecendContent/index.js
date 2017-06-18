@@ -24,7 +24,7 @@ class SecendContent extends Component {
                 <RaisedButton 
                   label="查看詳細" 
                   secondary 
-                  onTouchTap={this.go.bind(this, '/project/3')}
+                  onTouchTap={this.go.bind(this, '/project/2')}
                   />
               </div>
 						</Paper>

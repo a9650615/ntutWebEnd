@@ -3,7 +3,10 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
+import Snackbar from 'material-ui/Snackbar'
 import TextInput from '../TextInput'
+import jwtDecode from 'jwt-decode'
+import axios from 'axios'
 
 class ProjectForm extends Component {
   state = {
@@ -22,9 +25,31 @@ class ProjectForm extends Component {
     })
   }
 
+  submit() {
+    let data = jwtDecode(localStorage.getItem('token'))
+    this.setState({message: '測試輸出'})
+    let send = {
+      token: data.sub,
+      title: this.refs.title.getValue(),
+      content: this.refs.content.getValue(),
+      category: this.props.category,
+      goal: this.refs.goal.getValue()
+    }
+    
+    axios.post(process.env['REACT_APP_API_URL']+'fundings/?type=POST', send).then((data) => {
+      console.log(data)
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  closeNotice() {
+    this.setState({message: null})
+  }
+
   buttonElements = (
     <div>
-      <FlatButton primary label="新增" onTouchTap={this.closeForm.bind(this)} />
+      <FlatButton primary label="新增" onTouchTap={this.submit.bind(this)} />
       <FlatButton label="取消" onTouchTap={this.closeForm.bind(this)} />
     </div>
   )
@@ -32,6 +57,12 @@ class ProjectForm extends Component {
   render() {
     return (
       <div>
+        <Snackbar 
+          open={this.state.message?true:false}
+          message={this.state.message||''}
+          autoHideDuration={4000}
+          onRequestClose={this.closeNotice.bind(this)}
+          />
         <Dialog 
           title="新增項目"
           actions={this.buttonElements}
@@ -43,30 +74,33 @@ class ProjectForm extends Component {
             padding: '30px'
           }}
         >
-          <p>
+          <div>
             <TextInput 
             hintText="輸入項目標題"
             floatingLabelText="項目標題"
+            ref="title"
             fullWidth
             />
-          </p>
-          <p>
+          </div>
+          <div>
             <TextInput 
               hintText="輸入項目說明"
               floatingLabelText="項目說明"
+              ref="content"
               multiLine
               fullWidth
               />
-          </p>
-          <p>
+          </div>
+          <div>
             <TextInput 
               type="number"
-              floatingLabelText="項目金額"
+              floatingLabelText="項目目標金額"
               defaultValue={0}
               min={0}
+              ref="goal"
               fullWidth
               />
-          </p>
+          </div>
         </Dialog>
         <FloatingActionButton 
           onTouchTap={this.openForm.bind(this)}

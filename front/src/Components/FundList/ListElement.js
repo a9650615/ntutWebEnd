@@ -39,9 +39,9 @@ class ListElement extends Component {
             />
         </div>
         <div className="content">
-          <p>title</p>
-          <p>content</p>
-          <p className="goal">$ 123</p>
+          <p>{this.props.data.title}</p>
+          <p>{this.props.data.content}</p>
+          <p className="goal">$ {this.props.data.sponsored} / $ {this.props.data.goal}</p>
         </div>
       </Paper>
     );

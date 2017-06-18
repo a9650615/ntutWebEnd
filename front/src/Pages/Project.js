@@ -24,8 +24,8 @@ class Project extends Component {
           <div>
             <FundProgress />
           </div>
-          <FundList />
-          <ProjectForm />
+          <FundList category={this.props.match.params.projectId} />
+          <ProjectForm category={this.props.match.params.projectId} />
         </Grid>
       </div>
     );
