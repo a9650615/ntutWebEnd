@@ -8,10 +8,10 @@ class CreatorLists extends Component {
     return (
       <div>
         <Grid fluid>
-          <CreatorInfo name="許景程" content={"理念擔當-創世神 Demiurge"} />
-          <CreatorInfo name="蔡銘祐" content={"程式擔當-造物者 Creater"} />
-          <CreatorInfo name="彭旭豪" content={"美術擔當-雕塑者 Sculptor"} />
-          <CreatorInfo name="林軒弘" content={"執行擔當-奔波者 Rider"} />
+          <CreatorInfo name="許景程" content={"理念擔當-創世神 Demiurge"} mdFile="EnChen.md"/>
+          <CreatorInfo name="蔡銘祐" content={"程式擔當-造物者 Creater"} mdFile="MingYou.md"/>
+          <CreatorInfo name="彭旭豪" content={"美術擔當-雕塑者 Sculptor"} mdFile="HowLemon.md"/>
+          <CreatorInfo name="林軒弘" content={"執行擔當-奔波者 Rider"} mdFile="Mental.md"/>
         </Grid>
       </div>
     )
