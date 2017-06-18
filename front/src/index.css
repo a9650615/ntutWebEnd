@@ -10,3 +10,8 @@ img {
   height: auto;
   min-width: 100%;
 }
+
+a {
+  color: #333;
+  text-decoration: none;
+}
