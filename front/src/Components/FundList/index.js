@@ -11,7 +11,6 @@ export default class FundList extends Component {
       this.setState({
         data: data.data.data
       })
-      console.log(data.data.data)
     })
   }
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Grid } from 'react-flexbox-grid'
+import axios from 'axios'
+import ReactMardown from 'react-markdown'
 import FundProject from '../Components/FundProject/'
 import FundList from '../Components/FundList/'
 import FundProgress from '../Components/FundProgress/'
@@ -11,9 +13,24 @@ let title = [
   '遭遇人類迫害的砂礫'
 ]
 
+let mdData = [
+  'Soap.md',
+  'Social_vulnerable_groups.md',
+  'beach_damage.md'
+]
+
 class Project extends Component {
+  state = {data: ''}
   getTitle() {
     return title[this.props.match.params.projectId-1]
+  }
+
+  componentWillMount() {
+    axios.get(`/mdData/${mdData[this.props.match.params.projectId-1]}`).then((data) => {
+      this.setState({
+        data: data.data
+      })
+    })
   }
 
   render() {
@@ -21,8 +38,9 @@ class Project extends Component {
       <div className="App">
         <FundProject title={this.getTitle()} />
         <Grid fluid>
-          <div>
+          <div style={{marginBottom: 50}}>
             <FundProgress />
+            <ReactMardown source={this.state.data} />
           </div>
           <FundList category={this.props.match.params.projectId} />
           <ProjectForm category={this.props.match.params.projectId} />
