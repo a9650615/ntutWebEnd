@@ -1,18 +1,33 @@
 import React, { Component } from 'react'
 import { Grid } from 'react-flexbox-grid'
 import FundProject from '../Components/FundProject/'
+import FundList from '../Components/FundList/'
+import FundProgress from '../Components/FundProgress/'
 
-class App extends Component {
+let title = [
+  '為這個世界獻上肥皂',
+  '受到漠視的族群',
+  '遭遇人類迫害的砂礫'
+]
+
+class Project extends Component {
+  getTitle() {
+    return title[this.props.match.params.projectId-1]
+  }
+
   render() {
     return (
       <div className="App">
-        <FundProject />
+        <FundProject title={this.getTitle()} />
         <Grid fluid>
-          這裡是詳細頁面
+          <div>
+            <FundProgress />
+          </div>
+          <FundList />
         </Grid>
       </div>
     );
   }
 }
 
-export default App;
+export default Project

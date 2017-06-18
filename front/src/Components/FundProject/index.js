@@ -11,10 +11,10 @@ class FundProject extends Component {
         }}
         className="FundProject"
         >
-        <Grid>
-          <h1>專案項目</h1>
+        <Grid fluid>
+          <h1>{this.props.title}</h1>
           <div>
-            <p>專案項目共有{}項</p>
+            <p>專案項目共有{this.props.projectNumber}項</p>
           </div>
           <div>專案圖片</div>
         </Grid>
