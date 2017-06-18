@@ -2,6 +2,9 @@
   background: #f7f7f7;
   margin-top: 1rem;
   padding: 2rem 0;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
 }
 
 .footer hr {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom"
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import {ListItem} from 'material-ui/List'

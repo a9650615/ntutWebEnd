@@ -2,6 +2,7 @@
   padding: 10px 20px;
   vertical-align: middle;
   position: relative;
+  cursor: pointer;
 }
 
 .listElement p {
