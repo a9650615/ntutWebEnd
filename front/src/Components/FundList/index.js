@@ -10,7 +10,7 @@ export default class FundList extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{minHeight: '40vh'}}>
         <ListElement />
       </div>
     )

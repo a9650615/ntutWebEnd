@@ -70,7 +70,7 @@ class ProjectForm extends Component {
         </Dialog>
         <FloatingActionButton 
           onTouchTap={this.openForm.bind(this)}
-          style={{position: 'fixed', right: '10%', bottom: '5%'}}>
+          style={{position: 'fixed', right: '10%', bottom: '5%', zIndex: 5}}>
           <ContentAdd />
         </FloatingActionButton>
       </div>

@@ -6,6 +6,7 @@ import Project from './Pages/Project'
 import Intruction from './Pages/Intruction'
 import Creator from './Pages/Creator'
 import Funding from './Pages/Funding'
+import CreatorLists from './Pages/CreatorLists'
 import Footer from './Components/Footer/'
 // import LoginRegister from './Pages/LoginRegister'
 
@@ -21,7 +22,8 @@ export default class Routers extends Component{
             <Route path="/project/:projectId/" component={Project} />
           </Switch>
           <Route path="/intruction" component={Intruction} />
-          <Route path="/creator" component={Creator} />
+          <Route path="/creator" component={CreatorLists} />
+          <Route path="/creator/:name" component={Creator} />
           {/*<Route path="/login" component={LoginRegister} />*/}
         </div>
         <Footer />
