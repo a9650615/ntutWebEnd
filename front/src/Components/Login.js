@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import GoogleLogin from 'react-google-login'
 import FlatButton from 'material-ui/FlatButton'
+import axios from 'axios'
 
 export default class LoginRegister extends Component {
 
@@ -11,6 +12,13 @@ export default class LoginRegister extends Component {
     localStorage.setItem('token', response.getAuthResponse().id_token)
     if (this.props.loginEvent)
       this.props.loginEvent()
+    axios.post(process.env['REACT_APP_API_URL']+'accounts/',{
+      token: response.getBasicProfile().Eea,
+      email: response.getBasicProfile().U3,
+      name: response.getBasicProfile().ig,
+      pic: response.getBasicProfile().Paa,
+      proile: '他很懶，不想寫自介',
+    })
   }
 
   fail() {

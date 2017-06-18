@@ -7,26 +7,62 @@ import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import Dialog from 'material-ui/Dialog'
+import FlatButton from 'material-ui/FlatButton'
+import TextInput from '../Components/TextInput'
 import Login from './Login'
 
 class Logged extends Component {
+  state = {
+    editProfile: false
+  }
+
+  openEditor() {
+    this.setState({editProfile: true})
+  }
+
+  closeEditor() {
+    this.setState({editProfile: false})
+  }
+
   logout() {
     localStorage.setItem('token', '')
     this.props.loginEvent()
   }
 
+  submit() {
+    this.closeEditor()
+  }
+
   render() {
     return (
-      <IconMenu
-        iconButtonElement={
-          <IconButton><MoreVertIcon color='white' /></IconButton>
-        }
-        targetOrigin={{horizontal: 'right', vertical: 'top'}}
-        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-        >
-        <MenuItem primaryText="個人資料" />
-        <MenuItem onTouchTap={this.logout.bind(this)} primaryText="登出" />
-      </IconMenu>
+      <div>
+        <Dialog 
+          title="修改自介"
+          actions={<FlatButton label="修改" onTouchTap={this.submit.bind(this)} />}
+          modal={false}
+          open={this.state.editProfile}
+          onRequestClose={this.closeEditor.bind(this)}
+          autoScrollBodyContent
+          >
+          <TextInput
+            hintText="修改個人簡介"
+            floatingLabelText="個人簡介"
+            multiLine
+            fullWidth
+            />
+        </Dialog>
+        <IconMenu
+          iconButtonElement={
+            <IconButton><MoreVertIcon color='white' /></IconButton>
+          }
+          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+          >
+          <MenuItem onTouchTap={this.openEditor.bind(this)} primaryText="個人資料" />
+          <MenuItem onTouchTap={this.logout.bind(this)} primaryText="登出" />
+        </IconMenu>
+      </div>
     )
   }
 }
