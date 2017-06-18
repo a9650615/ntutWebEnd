@@ -3,6 +3,7 @@ import { Grid } from 'react-flexbox-grid'
 import FundProject from '../Components/FundProject/'
 import FundList from '../Components/FundList/'
 import FundProgress from '../Components/FundProgress/'
+import ProjectForm from '../Components/ProjectForm/'
 
 let title = [
   '為這個世界獻上肥皂',
@@ -24,6 +25,7 @@ class Project extends Component {
             <FundProgress />
           </div>
           <FundList />
+          <ProjectForm />
         </Grid>
       </div>
     );

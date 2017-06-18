@@ -5,9 +5,11 @@ class FundDetail extends Component {
   render() {
     return (
       <div>
-        
+        <h2>標題</h2>
+        <div>Fund</div>
+        <div>Detail</div>
       </div>
-    );
+    )
   }
 }
 
