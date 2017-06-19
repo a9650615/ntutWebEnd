@@ -11,10 +11,15 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import TextInput from '../Components/TextInput'
 import Login from './Login'
+import jwtDecode from 'jwt-decode'
+import axios from 'axios'
+import qs from 'qs'
+import Snackbar from 'material-ui/Snackbar'
 
 class Logged extends Component {
   state = {
-    editProfile: false
+    editProfile: false,
+    message: null
   }
 
   openEditor() {
@@ -22,7 +27,10 @@ class Logged extends Component {
   }
 
   closeEditor() {
-    this.setState({editProfile: false})
+    this.setState({
+      editProfile: false,
+      message: null
+    })
   }
 
   logout() {
@@ -30,16 +38,48 @@ class Logged extends Component {
     this.props.loginEvent()
   }
 
-  submit() {
-    this.closeEditor()
+  closeNotice() {
+    this.setState({message: null})
   }
+
+  submit() {
+    let data = jwtDecode(localStorage.getItem('token'))
+    console.log(this.refs.info.getValue())
+    console.log(data)
+     axios.post(process.env['REACT_APP_API_URL']+'account/?type=edit',qs.stringify({
+      token: data.sub,
+      email: data.email,
+      name: data.name,
+      profile: data.picture,
+      description: this.refs.info.getValue()
+    }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+    this.setState({
+        message: '修改個人資料成功'
+    })
+    this.setState({
+      editProfile: false,
+    })
+  }
+
+  buttonElements = (
+    <div>
+      <FlatButton primary label="修改" onTouchTap={this.submit.bind(this)} />
+      <FlatButton label="關閉" onTouchTap={this.closeEditor.bind(this)} />
+    </div>
+  )
 
   render() {
     return (
       <div>
+         <Snackbar 
+          open={this.state.message?true:false}
+          message={this.state.message||''}
+          autoHideDuration={4000}
+          onRequestClose={this.closeNotice.bind(this)}
+        />
         <Dialog 
-          title="修改自介"
-          actions={<FlatButton label="修改" onTouchTap={this.submit.bind(this)} />}
+          title="修改個人資料"
+          actions={this.buttonElements}         
           modal={false}
           open={this.state.editProfile}
           onRequestClose={this.closeEditor.bind(this)}
@@ -48,6 +88,7 @@ class Logged extends Component {
           <TextInput
             hintText="修改個人簡介"
             floatingLabelText="個人簡介"
+            ref="info"
             multiLine
             fullWidth
             />
