@@ -11,6 +11,9 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import TextInput from '../Components/TextInput'
 import Login from './Login'
+import jwtDecode from 'jwt-decode'
+import axios from 'axios'
+import qs from 'qs'
 
 class Logged extends Component {
   state = {
@@ -31,6 +34,16 @@ class Logged extends Component {
   }
 
   submit() {
+    let data = jwtDecode(localStorage.getItem('token'))
+    console.log(this.refs.info.getValue())
+    console.log(data)
+     axios.post(process.env['REACT_APP_API_URL']+'account/?type=edit',qs.stringify({
+      token: data.sub,
+      email: data.email,
+      name: data.name,
+      profile: data.picture,
+      description: this.refs.info.getValue()
+    }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
     this.closeEditor()
   }
 
@@ -48,6 +61,7 @@ class Logged extends Component {
           <TextInput
             hintText="修改個人簡介"
             floatingLabelText="個人簡介"
+            ref="info"
             multiLine
             fullWidth
             />
