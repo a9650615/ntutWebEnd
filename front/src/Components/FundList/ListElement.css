@@ -21,9 +21,11 @@
   width: calc(100% - 64px);
   display: inline-block;
   vertical-align: top;
+  box-sizing: border-box;
+  padding: 20px 0 20px 20px;
 }
 
 .listElement .content .goal {
-  font-size: 1rem;
+  font-size: 1.25rem;
   text-align: right;
 }

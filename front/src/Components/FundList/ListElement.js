@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
+import {Row, Col} from 'react-flexbox-grid'
 import Paper from 'material-ui/Paper'
 import Avatar from 'material-ui/Avatar'
 import './ListElement.css'
@@ -39,9 +40,10 @@ class ListElement extends Component {
             />
         </div>
         <div className="content">
-          <p>{this.props.data.title}</p>
-          <p>{this.props.data.content}</p>
-          <p className="goal">$ {this.props.data.sponsored} / $ {this.props.data.goal}</p>
+          <Row>
+            <Col xs={12} sm={8}>{this.props.data.title}</Col>
+            <Col xs={12} sm={4} className="goal">$ {this.props.data.sponsored} / $ {this.props.data.goal}</Col>
+          </Row>
         </div>
       </Paper>
     );
