@@ -7,7 +7,7 @@ class FundProject extends Component {
     return (
       <div 
         style={{
-        backgroundImage: 'url(https://images.unsplash.com/photo-1486724008897-90887422ab51?dpr=1&auto=format&fit=crop&w=1500&h=846&q=80&cs=tinysrgb&crop=&bg=)',
+        backgroundImage: `url(${this.props.cover||'https://images.unsplash.com/photo-1486724008897-90887422ab51?dpr=1&auto=format&fit=crop&w=1500&h=846&q=80&cs=tinysrgb&crop=&bg='})`,
         backgroundSize: 'cover'
         }}
         className="FundProject"

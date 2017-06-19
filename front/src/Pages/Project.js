@@ -19,6 +19,12 @@ let mdData = [
   'beach_damage.md'
 ]
 
+let cover = [
+  '/img/soap.png',
+  '',
+  '/img/beach.jpg'
+]
+
 class Project extends Component {
   state = {data: ''}
   getTitle() {
@@ -40,7 +46,7 @@ class Project extends Component {
   render() {
     return (
       <div className="App">
-        <FundProject title={this.getTitle()} projectNumber={0} />
+        <FundProject cover={cover[this.props.match.params.projectId-1]} title={this.getTitle()} projectNumber={0} />
         <Grid fluid>
           <div style={{marginBottom: 50}}>
             <FundProgress />
