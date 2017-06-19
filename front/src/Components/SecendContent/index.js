@@ -31,7 +31,7 @@ class SecendContent extends Component {
 					</Col>
            {/* Section 2 */}
           <Col xs={12} sm={6}>
-            <Paper className="listContent">
+            <Paper className="listContent beach">
               <div className="coverImage"></div>
               <div className="detail">
                 <h1 className="mainTitle">海洋廢棄物</h1>

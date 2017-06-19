@@ -70,7 +70,7 @@ class CreatorInfo extends Component {
               <Avatar
                 src={this.props.img||"//i.imgur.com/TymTGMF.jpg"}
                 size={128}
-                style={{minWidth: 'auto'}}
+                style={{minWidth: 'auto', marginTop: 10}}
                 />
             </Col>
             <Col xs={12} sm={8}>
