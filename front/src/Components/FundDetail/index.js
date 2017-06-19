@@ -8,13 +8,21 @@ import Dialog from 'material-ui/Dialog'
 import Slider from 'material-ui/Slider'
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
+import qs from 'qs'
 import './FundDetail.css'
 
 class FundDetail extends Component {
   state = {
     message: null,
     openFundSelect: false,
-    fundPrice: 100
+    fundPrice: 100,
+    data: {}
+  }
+
+  componentWillMount() {
+    axios.get(`${process.env['REACT_APP_API_URL']}fundings/subject/${this.props.id}`).then((data) => {
+      this.setState({data: data.data.data[0]})
+    })
   }
 
   setMessage(message = null) {
@@ -54,12 +62,12 @@ class FundDetail extends Component {
   }
 
   submit() {
-    axios.post(`${process.env['REACT_APP_API_URL']}founders/`, {
+    axios.post(`${process.env['REACT_APP_API_URL']}founder/`, qs.stringify({
       name: jwtDecode(localStorage.getItem('token')).name,
       money: this.state.fundPrice,
-      spronsorID: this.props.id,
+      sponsorID: this.props.id,
       token: jwtDecode(localStorage.getItem('token')).sub
-    })
+    }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
     this.handleClose()
   }
 
@@ -84,7 +92,7 @@ class FundDetail extends Component {
               贊助金額: {this.state.fundPrice}
             </p>
         </Dialog>
-        <h2>標題</h2>
+        <h2>{this.state.data?this.state.data.title:''}</h2>
         <Row>
           <Col xs={12} sm={8} className="progress">
             <LinearProgress mode="determinate" value={60} />
@@ -100,8 +108,7 @@ class FundDetail extends Component {
           </Col>
         </Row>
         <div className="detail">
-          Bababababababa
-          Bababababababa
+         {this.state.data.content}
         </div>
         <Snackbar
           open={this.state.message?true:false}

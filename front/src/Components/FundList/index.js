@@ -22,7 +22,7 @@ export default class FundList extends Component {
     return (
       <div style={{minHeight: '40vh'}}>
         {
-          (this.state.data.length) &&
+          (this.state.data.length>0) && 
           this.state.data.map((data) => {
             return (
             <ListElement key={data.ID} data={data}/>

@@ -20,7 +20,7 @@ class Footer extends Component {
           <hr />
           <Row>
             <Col xs={12} sm={6}>只有愛心不被冷漠，為你為台灣</Col>
-            <Col xs={12} sm={6} className="textRight">CopyRight@2017.Aqua</Col>
+            <Col xs={12} sm={6} className="textRight">CopyRight@2017.<a href="//aqua.birdyo.ga/">Aqua</a></Col>
           </Row>
         </Grid>
       </div>
