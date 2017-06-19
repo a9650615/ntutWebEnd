@@ -1,0 +1,21 @@
+.MainContent {
+  padding: 200px 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 0px 10px .1px #555 inset;
+}
+
+.MainContent .background {
+  position: absolute;
+  top: 0;
+  background-image: url('/img/soapCover.jpg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  min-height: 300px;
+  height: 100%;
+  width: 100%;
+  right: 0;
+  z-index: -1;
+  background-position: 25% 50%;
+  background-attachment: fixed;
+}
