@@ -12,6 +12,8 @@
 	//print_r($requested_uri);
 	
 	header('Content-Type:application/json;charset=utf-8');
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, HEAD')
 	include 'subjects.php';
 	include 'founders.php';
 	
@@ -21,7 +23,7 @@
 			array_push($list,$record);
 		}
 	}
-	
+	 
 	echo json_encode([
 		'data'=> $list
 	]);

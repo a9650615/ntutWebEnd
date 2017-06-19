@@ -1,5 +1,4 @@
 <?php
-  
 	$result;
 	if($requested_uri[0] == 'account')
 	switch($method){
