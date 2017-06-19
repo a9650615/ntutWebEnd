@@ -14,10 +14,12 @@ import Login from './Login'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
 import qs from 'qs'
+import Snackbar from 'material-ui/Snackbar'
 
 class Logged extends Component {
   state = {
-    editProfile: false
+    editProfile: false,
+    message: null
   }
 
   openEditor() {
@@ -25,12 +27,19 @@ class Logged extends Component {
   }
 
   closeEditor() {
-    this.setState({editProfile: false})
+    this.setState({
+      editProfile: false,
+      message: null
+    })
   }
 
   logout() {
     localStorage.setItem('token', '')
     this.props.loginEvent()
+  }
+
+  closeNotice() {
+    this.setState({message: null})
   }
 
   submit() {
@@ -44,15 +53,33 @@ class Logged extends Component {
       profile: data.picture,
       description: this.refs.info.getValue()
     }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-    this.closeEditor()
+    this.setState({
+        message: '修改個人資料成功'
+    })
+    this.setState({
+      editProfile: false,
+    })
   }
+
+  buttonElements = (
+    <div>
+      <FlatButton primary label="修改" onTouchTap={this.submit.bind(this)} />
+      <FlatButton label="關閉" onTouchTap={this.closeEditor.bind(this)} />
+    </div>
+  )
 
   render() {
     return (
       <div>
+         <Snackbar 
+          open={this.state.message?true:false}
+          message={this.state.message||''}
+          autoHideDuration={4000}
+          onRequestClose={this.closeNotice.bind(this)}
+        />
         <Dialog 
-          title="修改自介"
-          actions={<FlatButton label="修改" onTouchTap={this.submit.bind(this)} />}
+          title="修改個人資料"
+          actions={this.buttonElements}         
           modal={false}
           open={this.state.editProfile}
           onRequestClose={this.closeEditor.bind(this)}
