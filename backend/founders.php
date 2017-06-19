@@ -22,6 +22,6 @@
 				$result = mysqli_query($connected, "DELETE FROM founders WHERE ID = '$ID' ");
 			break;	
 	}
-
+ 
 	
 ?>
