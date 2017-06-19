@@ -7,10 +7,12 @@ import Snackbar from 'material-ui/Snackbar'
 import TextInput from '../TextInput'
 import jwtDecode from 'jwt-decode'
 import axios from 'axios'
+import qs from 'qs'
 
 class ProjectForm extends Component {
   state = {
-    formOpen: false
+    formOpen: false,
+    message: null
   }
 
   closeForm() {
@@ -20,26 +22,36 @@ class ProjectForm extends Component {
   }
 
   openForm() {
-    this.setState({
-      formOpen: true
-    })
+    if (localStorage.getItem('token'))
+      this.setState({
+        formOpen: true
+      })
+    else 
+      this.setState({
+        message: '請先登入!'
+      })
   }
 
   submit() {
     let data = jwtDecode(localStorage.getItem('token'))
-    this.setState({message: '測試輸出'})
-    let send = {
+    this.setState({message: '新增中...'})
+    let send = qs.stringify({
       token: data.sub,
       title: this.refs.title.getValue(),
       content: this.refs.content.getValue(),
       category: this.props.category,
       goal: this.refs.goal.getValue()
-    }
+    })
     
-    axios.post(process.env['REACT_APP_API_URL']+'fundings/?type=POST', send).then((data) => {
-      console.log(data)
+    axios.post(process.env['REACT_APP_API_URL']+'fundings/?type=POST', send,
+      { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }}).then((data) => {
+      this.setState({
+        formOpen: false,
+        message: '新增成功'
+      })
+      this.props.reload()
     }).catch(function (error) {
-      console.log(error);
+      this.setState({message: error})
     });
   }
 

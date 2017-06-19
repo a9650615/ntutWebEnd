@@ -7,6 +7,10 @@ export default class FundList extends Component {
     data: []
   }
   componentWillMount() {
+    this.reload()
+  }
+
+  reload() {
     axios.get(`${process.env['REACT_APP_API_URL']}fundings/category/${this.props.category}`).then((data) => {
       this.setState({
         data: data.data.data
@@ -18,6 +22,7 @@ export default class FundList extends Component {
     return (
       <div style={{minHeight: '40vh'}}>
         {
+          (this.state.data.length) &&
           this.state.data.map((data) => {
             return (
             <ListElement key={data.ID} data={data}/>

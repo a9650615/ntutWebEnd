@@ -33,6 +33,10 @@ class Project extends Component {
     })
   }
 
+  reload() {
+    this.refs.list.reload()
+  }
+
   render() {
     return (
       <div className="App">
@@ -42,8 +46,8 @@ class Project extends Component {
             <FundProgress />
             <ReactMardown source={this.state.data} />
           </div>
-          <FundList category={this.props.match.params.projectId} />
-          <ProjectForm category={this.props.match.params.projectId} />
+          <FundList ref="list" category={this.props.match.params.projectId} />
+          <ProjectForm reload={this.reload.bind(this)} category={this.props.match.params.projectId} />
         </Grid>
       </div>
     );
