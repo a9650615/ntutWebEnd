@@ -101,9 +101,9 @@ class Header extends Component {
           docked={false}
           width={300}
           onRequestChange={(data) => this.setState({drawerOpen: data})}>
-            <ListItem primaryText="首頁" onTouchTap={() => this.props.history.push('/')} />
-            <ListItem primaryText="美好世界" onTouchTap={() => this.props.history.push('/intruction')} />
-            <ListItem primaryText="創世神" onTouchTap={() => this.props.history.push('/creator')} />
+            <ListItem primaryText="首頁" onTouchTap={() => {this.drawerSw();this.props.history.push('/')}} />
+            <ListItem primaryText="美好世界" onTouchTap={() => {this.drawerSw();this.props.history.push('/intruction')}} />
+            <ListItem primaryText="創世神" onTouchTap={() => {this.drawerSw();this.props.history.push('/creator')}} />
         </Drawer>
       </div>
     );
