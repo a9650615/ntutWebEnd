@@ -21,10 +21,14 @@
 			$category = $requested_uri[2];
 			//founder/token
 			$token = $requested_uri[2];
+			//subject/ID
+			$id = $requested_uri[2];
 			if($type == 'category')
 				$result = mysqli_query($connected, "SELECT * FROM fundings WHERE category = $category ");
 			else if($type == 'account')
 				$result = mysqli_query($connected, "SELECT * FROM fundings WHERE token = '$token'");
+			else if($type == 'subject')
+				$result = mysqli_query($connected, "SELECT * FROM fundings WHERE ID = '$id'");
 			else
 				$result = mysqli_query($connected, "SELECT * FROM fundings");
 			break;
