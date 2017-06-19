@@ -7,16 +7,16 @@ class FundProject extends Component {
     return (
       <div 
         style={{
-        backgroundImage: 'url(https://images.unsplash.com/photo-1486724008897-90887422ab51?dpr=1&auto=format&fit=crop&w=1500&h=846&q=80&cs=tinysrgb&crop=&bg=)'
+        backgroundImage: 'url(https://images.unsplash.com/photo-1486724008897-90887422ab51?dpr=1&auto=format&fit=crop&w=1500&h=846&q=80&cs=tinysrgb&crop=&bg=)',
+        backgroundSize: 'cover'
         }}
         className="FundProject"
         >
         <Grid fluid>
           <h1>{this.props.title}</h1>
           <div>
-            <p>專案項目共有{this.props.projectNumber}項</p>
+            <p>專案項目共有 {this.props.projectNumber} 項</p>
           </div>
-          <div>專案圖片</div>
         </Grid>
       </div>
     )
