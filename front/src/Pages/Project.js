@@ -40,7 +40,7 @@ class Project extends Component {
   render() {
     return (
       <div className="App">
-        <FundProject title={this.getTitle()} />
+        <FundProject title={this.getTitle()} projectNumber={0} />
         <Grid fluid>
           <div style={{marginBottom: 50}}>
             <FundProgress />

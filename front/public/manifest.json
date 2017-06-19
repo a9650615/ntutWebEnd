@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "贊助網站",
+  "name": "Aqua!!!",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
+      "src": "img/logo-96.png",
+      "sizes": "96x96",
       "type": "image/png"
     }
   ],
