@@ -7,3 +7,9 @@
 .creatorInfo .avatarInfo {
   text-align: center;
 }
+
+.info{
+  font-size: 20px;
+  font-weight:600;
+  font-family:Microsoft JhengHei;
+}

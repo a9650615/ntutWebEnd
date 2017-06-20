@@ -50,16 +50,17 @@ class CreatorInfo extends Component {
   render() {
     return (
       <div>
-        <Dialog 
+        <Dialog
           title={this.props.name}
           actions={<FlatButton label="關閉" onTouchTap={this.closeDialog.bind(this)} />}
           modal={true}
           open={this.state.dialogOpen}
           autoScrollBodyContent
           >
-            <ReactMarkdown source={this.state.data} />
+
+            <ReactMarkdown className="info" source={this.state.data} />
           </Dialog>
-        <Paper 
+        <Paper
           className="creatorInfo"
           zDepth={this.state.zDepth}
           onTouchTap={this.openDialog.bind(this)}
