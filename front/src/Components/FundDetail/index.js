@@ -9,6 +9,7 @@ import Slider from 'material-ui/Slider'
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 import qs from 'qs'
+import TextInput from '../TextInput'
 import './FundDetail.css'
 
 class FundDetail extends Component {
@@ -16,7 +17,12 @@ class FundDetail extends Component {
     message: null,
     openFundSelect: false,
     fundPrice: 100,
+    textPrice: this.textChange.bind(this),
     data: {}
+  }
+
+  textChange(event) {
+    this.setState({fundPrice: event.target.value});
   }
 
   componentWillReceiveProps (nextProps) {
@@ -85,15 +91,20 @@ class FundDetail extends Component {
           onRequestClose={this.handleClose.bind(this)}
           contentStyle={{width: '300px'}}
         >
+          <p>
+                贊助金額(Max:100000):
+          </p>
+          <TextInput 
+            value={this.state.fundPrice}
+            onChange={this.state.textPrice}
+            ref="price"
+          />
           <Slider 
             step={0.10} 
             max={100000} 
             value={this.state.fundPrice}
             onChange={this.handleSlider.bind(this)}
-            />
-            <p>
-              贊助金額: {this.state.fundPrice}
-            </p>
+          />
         </Dialog>
         <h2>{this.state.data?this.state.data.title:''}</h2>
         <Row>
