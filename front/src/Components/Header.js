@@ -19,7 +19,17 @@ import Snackbar from 'material-ui/Snackbar'
 class Logged extends Component {
   state = {
     editProfile: false,
-    message: null
+    message: null,
+    description: ''
+  }
+
+  componentWillMount() {
+    let data = jwtDecode(localStorage.getItem('token'))
+    axios.get(process.env['REACT_APP_API_URL']+'account/id/'+data.sub).then((data) => {
+      this.setState({
+        description: data.data.data[0].description
+      })
+    })
   }
 
   openEditor() {
@@ -44,8 +54,6 @@ class Logged extends Component {
 
   submit() {
     let data = jwtDecode(localStorage.getItem('token'))
-    console.log(this.refs.info.getValue())
-    console.log(data)
      axios.post(process.env['REACT_APP_API_URL']+'account/?type=edit',qs.stringify({
       token: data.sub,
       email: data.email,
@@ -54,10 +62,9 @@ class Logged extends Component {
       description: this.refs.info.getValue()
     }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
     this.setState({
-        message: '修改個人資料成功'
-    })
-    this.setState({
-      editProfile: false,
+        message: '修改個人資料成功',
+        description: this.refs.info.getValue(),
+        editProfile: false
     })
   }
 
@@ -89,6 +96,7 @@ class Logged extends Component {
             hintText="修改個人簡介"
             floatingLabelText="個人簡介"
             ref="info"
+            default={this.state.description}
             multiLine
             fullWidth
             />
