@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ListElement from './ListElement'
+import CircularProgress from 'material-ui/CircularProgress'
 
 export default class FundList extends Component {
   state = {
@@ -33,6 +34,10 @@ export default class FundList extends Component {
             <ListElement key={data.ID} data={data}/>
             )
           })
+        }
+        {
+          (this.state.data.length === 0) &&
+          <div className="textCenter"><CircularProgress size={80} thickness={5} /></div>
         }
       </div>
     )
