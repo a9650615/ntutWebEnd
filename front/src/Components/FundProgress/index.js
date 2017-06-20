@@ -14,7 +14,7 @@ class FundProgress extends Component {
         </Col>
         <Col xs={12} sm={4} className="funder">
           <FontIcon className="material-icons" style={{fontSize: 32}}>account_circle</FontIcon>
-          <span className="funders">200 人</span>
+          <span className="funders">{this.props.length} 人</span>
         </Col>
       </Row>
     );

@@ -26,7 +26,7 @@ let cover = [
 ]
 
 class Project extends Component {
-  state = {data: ''}
+  state = {data: '', length: 0}
   getTitle() {
     return title[this.props.match.params.projectId-1]
   }
@@ -43,16 +43,22 @@ class Project extends Component {
     this.refs.list.reload()
   }
 
+  getLength(length) {
+    this.setState({
+      length: length
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <FundProject cover={cover[this.props.match.params.projectId-1]} title={this.getTitle()} projectNumber={0} />
+        <FundProject cover={cover[this.props.match.params.projectId-1]} title={this.getTitle()} projectNumber={this.state.length} />
         <Grid fluid>
           <div style={{marginBottom: 50}}>
-            <FundProgress />
+            <FundProgress length={this.state.length} />
             <ReactMardown source={this.state.data} />
           </div>
-          <FundList ref="list" category={this.props.match.params.projectId} />
+          <FundList getLength={this.getLength.bind(this)} ref="list" category={this.props.match.params.projectId} />
           <ProjectForm reload={this.reload.bind(this)} category={this.props.match.params.projectId} />
         </Grid>
       </div>

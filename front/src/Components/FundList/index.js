@@ -15,7 +15,12 @@ export default class FundList extends Component {
       this.setState({
         data: data.data.data
       })
+      this.getLength()
     })
+  }
+
+  getLength() {
+    this.props.getLength(this.state.data.length)
   }
 
   render() {
