@@ -20,7 +20,7 @@ class SecendContent extends Component {
               <div className="coverImage"></div>
               <div className="detail">
                 <h1 className="mainTitle">受到漠視的族群</h1>
-                <p>#地位低 #無權 #無勢</p>
+                <p className="tag">#地位低 #無權 #無勢</p>
                 <RaisedButton
                   label="查看詳細"
                   secondary
@@ -35,7 +35,7 @@ class SecendContent extends Component {
               <div className="coverImage"></div>
               <div className="detail">
                 <h1 className="mainTitle">被人類侵蝕的淨土</h1>
-                <p>#沙灘破壞</p>
+                <p className="tag">#沙灘破壞</p>
                 <RaisedButton
                   label="查看詳細"
                   secondary

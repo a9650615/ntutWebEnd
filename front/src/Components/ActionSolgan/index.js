@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
-import { Grid, Row, Col } from 'react-flexbox-grid'
+import { Grid, Row } from 'react-flexbox-grid'
 import RaisedButton from 'material-ui/RaisedButton'
 import './ActionSolgan.css'
 
@@ -13,17 +13,13 @@ class ActionSolgan extends Component {
 			<div>
 				<div className="ActionSolgan">
 					<Grid fluid>
-						<Row className="titleBlock">
-							<Col sm={9}>
-								<h1 className="mainTitle">愛心不會被冷漠無視</h1>
-							</Col>
-							<Col sm={3} className="actionButtonBlock">
-								<RaisedButton 
-									label="Join Us"
-									onTouchTap={() => this.props.history.push('/intruction')}
-									className="joinButton" secondary />
-							</Col>
-						</Row>
+						<div className="titleBlock">
+							<h1 className="mainTitle">愛心不會被冷漠無視</h1>
+							<RaisedButton 
+								label="Join Us"
+								onTouchTap={() => this.props.history.push('/intruction')}
+								className="joinButton" secondary />
+						</div>
 					</Grid>
 					<div className="background"></div>
 				</div>

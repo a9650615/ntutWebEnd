@@ -6,7 +6,8 @@
 }
 
 .ActionSolgan .titleBlock {
-    margin-top: 85%;
+    margin-top: 50%;
+    text-align: center;
 }
 
 .ActionSolgan .titleBlock h1 {
@@ -35,7 +36,15 @@
     z-index: -1;
 }
 
+.ActionSolgan .mainTitle {
+  display: block;
+}
+
 @media only screen and (min-width: 48em) {
+  .ActionSolgan .titleBlock h1 {
+    font-size: 5rem;
+  }
+
   .ActionSolgan .titleBlock .joinButton {
     display: inline-block !important;
   }
