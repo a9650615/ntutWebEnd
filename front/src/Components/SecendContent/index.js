@@ -19,11 +19,11 @@ class SecendContent extends Component {
 						<Paper className="listContent">
               <div className="coverImage"></div>
               <div className="detail">
-                <h1 className="mainTitle">弱勢族群</h1>
+                <h1 className="mainTitle">受到漠視的族群</h1>
                 <p>#地位低 #無權 #無勢</p>
-                <RaisedButton 
-                  label="查看詳細" 
-                  secondary 
+                <RaisedButton
+                  label="查看詳細"
+                  secondary
                   onTouchTap={this.go.bind(this, '/project/2')}
                   />
               </div>
@@ -34,11 +34,11 @@ class SecendContent extends Component {
             <Paper className="listContent beach">
               <div className="coverImage"></div>
               <div className="detail">
-                <h1 className="mainTitle">海洋廢棄物</h1>
+                <h1 className="mainTitle">被人類侵蝕的淨土</h1>
                 <p>#沙灘破壞</p>
-                <RaisedButton 
-                  label="查看詳細" 
-                  secondary 
+                <RaisedButton
+                  label="查看詳細"
+                  secondary
                   onTouchTap={this.go.bind(this, '/project/3')}
                   />
               </div>

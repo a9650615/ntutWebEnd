@@ -5,6 +5,9 @@
   background-image: url('/img/lower.jpg');
 }
 
+.mainTitle{
+  font-family: Microsoft JhengHei;
+}
 .beach .coverImage {
   background-image: url('/img/beach.jpg');
 }
