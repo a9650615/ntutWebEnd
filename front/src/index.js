@@ -17,6 +17,9 @@ const style = {
   appBar: {
     color: '#fff',
     textColor: '#333'
+  },
+  flatButton: {
+    textColor: '#333'
   }
 }
 
