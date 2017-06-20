@@ -14,6 +14,10 @@ import './index.css'
 injectTapEventPlugin()
 
 const style = {
+  appBar: {
+    color: '#fff',
+    textColor: '#333'
+  }
 }
 
 ReactDOM.render(

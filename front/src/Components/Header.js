@@ -104,7 +104,7 @@ class Logged extends Component {
         </Dialog>
         <IconMenu
           iconButtonElement={
-            <IconButton><MoreVertIcon color='white' /></IconButton>
+            <IconButton><MoreVertIcon color='black' /></IconButton>
           }
           targetOrigin={{horizontal: 'right', vertical: 'top'}}
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
