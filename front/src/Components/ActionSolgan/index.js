@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
-import { Grid, Row } from 'react-flexbox-grid'
+import { Grid } from 'react-flexbox-grid'
 import RaisedButton from 'material-ui/RaisedButton'
 import './ActionSolgan.css'
 
