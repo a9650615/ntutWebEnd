@@ -68,7 +68,8 @@ class FundDetail extends Component {
       name: jwtDecode(localStorage.getItem('token')).name,
       money: this.state.fundPrice,
       sponsorID: this.props.id,
-      token: jwtDecode(localStorage.getItem('token')).sub
+      token: jwtDecode(localStorage.getItem('token')).sub,
+      category: this.props.projectId
     }), { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }})
     this.handleClose()
   }
@@ -97,7 +98,8 @@ class FundDetail extends Component {
         <h2>{this.state.data?this.state.data.title:''}</h2>
         <Row>
           <Col xs={12} sm={8} className="progress">
-            <LinearProgress mode="determinate" value={60} />
+            <LinearProgress mode="determinate" value={(this.state.data.sponsored/this.state.data.goal)*100} />
+            {`${this.state.data.sponsored} / ${this.state.data.goal}`}
           </Col>
           <Col xs={12} sm={4}>
             <RaisedButton 

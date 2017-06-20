@@ -55,7 +55,7 @@ class Project extends Component {
         <FundProject cover={cover[this.props.match.params.projectId-1]} title={this.getTitle()} projectNumber={this.state.length} />
         <Grid fluid>
           <div style={{marginBottom: 50}}>
-            <FundProgress length={this.state.length} />
+            <FundProgress projectId={this.props.match.params.projectId} length={this.state.length} />
             <ReactMardown source={this.state.data} />
           </div>
           <FundList getLength={this.getLength.bind(this)} ref="list" category={this.props.match.params.projectId} />

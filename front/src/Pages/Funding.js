@@ -21,7 +21,9 @@ class Funding extends Component {
       <Grid fluid>
         <Row style={{padding: '30px 0'}}>
           <Col xs={12} sm={8}>
-            <FundDetail data={this.state.data} id={this.props.match.params.fundId} />
+            <FundDetail data={this.state.data} 
+              projectId={this.props.match.params.projectId} 
+              id={this.props.match.params.fundId} />
           </Col>
           <Col xs={12} sm={4}>
             <Publish data={this.state.data} />
