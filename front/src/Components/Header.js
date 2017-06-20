@@ -26,6 +26,7 @@ class Logged extends Component {
   componentWillMount() {
     let data = jwtDecode(localStorage.getItem('token'))
     axios.get(process.env['REACT_APP_API_URL']+'account/id/'+data.sub).then((data) => {
+      if (data.data.data[0])
       this.setState({
         description: data.data.data[0].description
       })
