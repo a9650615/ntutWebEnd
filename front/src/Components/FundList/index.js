@@ -5,7 +5,7 @@ import CircularProgress from 'material-ui/CircularProgress'
 
 export default class FundList extends Component {
   state = {
-    data: []
+    data: null
   }
   componentWillMount() {
     this.reload()
@@ -28,7 +28,7 @@ export default class FundList extends Component {
     return (
       <div style={{minHeight: '40vh'}}>
         {
-          (this.state.data.length>0) && 
+          (this.state.data) && 
           this.state.data.map((data) => {
             return (
             <ListElement key={data.ID} data={data}/>
@@ -36,7 +36,7 @@ export default class FundList extends Component {
           })
         }
         {
-          (this.state.data.length === 0) &&
+          (!this.state.data) &&
           <div className="textCenter"><CircularProgress size={80} thickness={5} /></div>
         }
       </div>

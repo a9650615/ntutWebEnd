@@ -34,7 +34,7 @@ class ListElement extends Component {
         onTouchTap={this.go.bind(this, `${this.props.match.params.projectId}/fund/${this.props.data.ID}`)}>
         <div className="avatar">
           <Avatar 
-            src="https://lh6.googleusercontent.com/-byV2gLoJ0rk/AAAAAAAAAAI/AAAAAAAAAAA/AAyYBF7Jt2kovwja6Ys3VOwpP-nsqT_xWg/s96-c/photo.jpg"
+            src={this.props.data.profile}
             size={64}
             style={{ display: 'inline-block', verticalAlign: 'middle'}}
             />

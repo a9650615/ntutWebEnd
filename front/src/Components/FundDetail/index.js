@@ -19,10 +19,12 @@ class FundDetail extends Component {
     data: {}
   }
 
-  componentWillMount() {
-    axios.get(`${process.env['REACT_APP_API_URL']}fundings/subject/${this.props.id}`).then((data) => {
-      this.setState({data: data.data.data[0]})
-    })
+  componentWillReceiveProps (nextProps) {
+    if (nextProps) {
+      this.setState({
+        data: nextProps.data
+      })
+    }
   }
 
   setMessage(message = null) {
