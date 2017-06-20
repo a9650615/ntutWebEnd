@@ -12,7 +12,6 @@ class Funding extends Component {
   componentWillMount() {
     axios.get(`${process.env['REACT_APP_API_URL']}fundings/subject/${this.props.match.params.fundId}`).then((data) => {
       this.setState({data: data.data.data[0]})
-      console.log(data.data.data[0])
     })
   }
 

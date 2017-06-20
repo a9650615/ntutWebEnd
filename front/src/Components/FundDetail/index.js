@@ -99,7 +99,7 @@ class FundDetail extends Component {
         <Row>
           <Col xs={12} sm={8} className="progress">
             <LinearProgress mode="determinate" value={(this.state.data.sponsored/this.state.data.goal)*100} />
-            {`${this.state.data.sponsored} / ${this.state.data.goal}`}
+            {`${Number(this.state.data.sponsored).toFixed(2)} / ${Number(this.state.data.goal).toFixed(2)}`}
           </Col>
           <Col xs={12} sm={4}>
             <RaisedButton 

@@ -42,7 +42,7 @@ class ListElement extends Component {
         <div className="content">
           <Row>
             <Col xs={12} sm={8}>{this.props.data.title}</Col>
-            <Col xs={12} sm={4} className="goal">$ {this.props.data.sponsored} / $ {this.props.data.goal}</Col>
+            <Col xs={12} sm={4} className="goal">$ {Number(this.props.data.sponsored).toFixed(2)} / $ {Number(this.props.data.goal).toFixed()}</Col>
           </Row>
         </div>
       </Paper>
