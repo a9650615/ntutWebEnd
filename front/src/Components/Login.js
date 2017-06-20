@@ -45,7 +45,6 @@ export default class LoginRegister extends Component {
          <FlatButton 
           label="登入"
           onTouchTap={this.clickGoogleLogin.bind(this)}
-          labelStyle={{color: 'white'}}
           style={{marginTop: 6}}
           />
       </div>
