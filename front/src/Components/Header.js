@@ -79,15 +79,15 @@ class Logged extends Component {
   render() {
     return (
       <div>
-         <Snackbar 
+         <Snackbar
           open={this.state.message?true:false}
           message={this.state.message||''}
           autoHideDuration={4000}
           onRequestClose={this.closeNotice.bind(this)}
         />
-        <Dialog 
+        <Dialog
           title="修改個人資料"
-          actions={this.buttonElements}         
+          actions={this.buttonElements}
           modal={false}
           open={this.state.editProfile}
           onRequestClose={this.closeEditor.bind(this)}
@@ -141,13 +141,13 @@ class Header extends Component {
     return (
       <div>
         <AppBar
-          title="集資網站"
+          title="弱勢!沙灘!肥皂!?"
           style={{position: 'fixed'}}
           onLeftIconButtonTouchTap={this.drawerSw.bind(this)}
           iconElementRight={this.state.login? <Logged loginEvent={this.loginUpdate.bind(this)} /> : <Login loginEvent={this.loginUpdate.bind(this)} />}
           />
-        <Drawer 
-          open={this.state.drawerOpen} 
+        <Drawer
+          open={this.state.drawerOpen}
           docked={false}
           width={300}
           onRequestChange={(data) => this.setState({drawerOpen: data})}>

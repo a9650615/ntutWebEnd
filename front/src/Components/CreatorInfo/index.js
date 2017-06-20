@@ -51,6 +51,7 @@ class CreatorInfo extends Component {
     return (
       <div>
         <Dialog
+
           title={this.props.name}
           actions={<FlatButton label="關閉" onTouchTap={this.closeDialog.bind(this)} />}
           modal={true}
